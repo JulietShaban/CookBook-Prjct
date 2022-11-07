@@ -13,9 +13,10 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Route>
-          <CreateEditForm />
+        <Route exact path="/create">
+          <CreateEditForm onCreate={this.props.createReceipt} />
         </Route>
+        
         <Route exact path="/">
           <ReceiptsList
             receipts={this.props.receipts}

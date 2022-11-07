@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function AddReceipt() {
-  console.log('hi')
+  console.log("hi");
   let receiptData = {
     title: "",
     text: "",

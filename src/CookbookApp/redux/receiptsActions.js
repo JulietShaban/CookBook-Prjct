@@ -48,11 +48,12 @@ export const deleteReceipt = (receiptId) => {
   return thunkAction;
 };
 
-export const createReceipt = (title, text) => {
+export const createReceipt = (title, text, photo) => {
   const thunkAction = function (dispatch) {
     const receiptData = {
       title,
       text,
+      photo,
       
     };
     receiptsGateway

@@ -1,10 +1,11 @@
 import React from "react";
 import { TextField } from "@mui/material";
-
+import Button from '@mui/material/Button';
 import IconButton from "@mui/material/IconButton";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
-
-const Form = () => {
+import { Link } from "react-router-dom";
+const Form = (onCreate) => {
+    
   return (
     <>
       <div>
@@ -32,6 +33,9 @@ const Form = () => {
           <PhotoCamera />
         </IconButton>
       </div>
+      <Link to="/">
+      <Button onClick={onCreate} variant="outlined">Save</Button>
+      </Link>
     </>
   );
 };

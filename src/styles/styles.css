@@ -19,14 +19,13 @@
   padding-top: 25px;
 }
 
-.buttons-common {
-  background-color: white;
-  border: 0 solid white;
-}
-
-.buttons-common:hover {
-  background-color: #e8eefa;
-  border-radius: 50%;
+.button_new {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .add-receipt__form {
