@@ -1,4 +1,4 @@
-const baseUrl = "https://63627aaf37f2167d6f65814c.mockapi.io/api/v1/:receipts";
+const baseUrl = "https://mockapi.io/clone/63627aaf37f2167d6f65814d";
 
 export const createReceipt = (receiptData) => {
   return fetch(baseUrl, {

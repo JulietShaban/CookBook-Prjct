@@ -26,9 +26,9 @@ class App extends Component {
 
 const mapDispatch = {
   getReceiptsList: receiptsActions.getReceiptsList,
-  updateReceiptsList: receiptsActions.updateReceipt,
-  deleteReceiptsList: receiptsActions.deleteReceipt,
-  createReceiptsList: receiptsActions.createReceipt,
+  updateReceipt: receiptsActions.updateReceipt,
+  deleteReceipt: receiptsActions.deleteReceipt,
+  createReceipt: receiptsActions.createReceipt,
 };
 
 const mapState = (state) => {

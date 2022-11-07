@@ -11,9 +11,9 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
+import DeleteIcon from "@mui/icons-material/Delete";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+import EditIcon from '@mui/icons-material/Edit';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -26,7 +26,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function RecipeReviewCard({title, text, image}) {
+export default function RecipeReviewCard({ title, text, image, onDelete, onEdit }) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -42,19 +42,13 @@ export default function RecipeReviewCard({title, text, image}) {
           </Avatar>
         }
         action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
+          <IconButton aria-label="edit">
+            <EditIcon/>
           </IconButton>
         }
         title={title}
-       
       />
-      <CardMedia
-        component="img"
-        height="194"
-        image={image}
-        alt="Food photo"
-      />
+      <CardMedia component="img" height="194" image={image} alt="Food photo" />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           {text}
@@ -64,9 +58,10 @@ export default function RecipeReviewCard({title, text, image}) {
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
+        <IconButton aria-label="delete">
+          <DeleteIcon onClick={onDelete}/>
         </IconButton>
+
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
