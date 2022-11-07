@@ -1,9 +1,11 @@
 import { RECEIPTS_LIST_RECIEVED } from "./receiptsActions";
 
-// add recipeItem and edit item
+
 
 const initialState = {
-  receiptsList: [{ title: "pasta", id: 1, text: "text" }],
+  receiptsList: [
+    {id:15, title: 'mama', text:"blah", image: 'https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg'}
+  ],
 };
 
 const receiptsReducer = (state = initialState, action) => {

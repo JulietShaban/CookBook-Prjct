@@ -1,11 +1,4 @@
-// Add get, post, put, delete methods for work with api
-// get
-// post
-// delete
-// getById
-// example => fetch(url).then(), fetch(')post', url).then()
-
-const baseUrl = "https://mockapi.io/projects/63627aaf37f2167d6f65814d/receipts";
+const baseUrl = "https://63627aaf37f2167d6f65814c.mockapi.io/api/v1/:receipts";
 
 export const createReceipt = (receiptData) => {
   return fetch(baseUrl, {
@@ -29,9 +22,9 @@ export const fetchReceiptsList = () => {
       }
     })
     .then((receiptsList) =>
-      receiptsList.map(({ _id, ...receipts }) => ({
+      receiptsList.map(({ _id, ...receipt }) => ({
         id: _id,
-        ...receipts,
+        ...receipt,
       }))
     );
 };

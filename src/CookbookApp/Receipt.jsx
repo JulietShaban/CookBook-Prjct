@@ -1,21 +1,17 @@
 import React from "react";
-import { Route } from "react-router-dom";
-import AddReceipt from "../AddReceipt";
-function Receipt({ id, receiptData }) {
+import RecipeReviewCard from "../RecipeReviewCard";
+
+function Receipt({ id, title, text, image, onChange, onDelete}) {
   return (
     <li id={id}>
-      {receiptData.title}
-      <button className="buttons-common">
+      {/* <h4>{title}</h4>
+      <button onClick={onDelete} className="buttons-common">
         <i class=" material-icons">delete</i>
       </button>
-      <button className="buttons-common">
-        <i class=" material-icons">
-          edit
-          <Route path="/editRecipe/:id">
-          <AddReceipt id={id} />
-          </Route>
-        </i>
-      </button>
+      <button onClick={onChange}  className="buttons-common">
+        <i class=" material-icons">edit</i>
+      </button> */}
+      <RecipeReviewCard image={image} title={title} text={text}/>
     </li>
   );
 }
