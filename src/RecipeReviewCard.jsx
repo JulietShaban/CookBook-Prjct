@@ -26,7 +26,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function RecipeReviewCard({ title, text, image, onDelete, onEdit }) {
+export default function RecipeReviewCard({ title, text, image, handleDelete, onEdit }) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -43,7 +43,7 @@ export default function RecipeReviewCard({ title, text, image, onDelete, onEdit 
         }
         action={
           <IconButton aria-label="edit">
-            <EditIcon/>
+            <EditIcon />
           </IconButton>
         }
         title={title}
@@ -58,8 +58,8 @@ export default function RecipeReviewCard({ title, text, image, onDelete, onEdit 
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="delete">
-          <DeleteIcon onClick={onDelete}/>
+        <IconButton onClick={handleDelete} aria-label="delete">
+          <DeleteIcon />
         </IconButton>
 
         <ExpandMore

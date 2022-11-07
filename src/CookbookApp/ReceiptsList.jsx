@@ -4,11 +4,11 @@ import Receipt from "./Receipt";
 const ReceiptsList = ({ receipts, onDelete }) => {
   return (
     <>
-      <h1 >Your Pocket CookBook</h1>
+      <h1 className="app-name">Your Receipts</h1>
 
-      <ul className="unordered-list">
+      <ul className="unordered_list">
         {receipts.map((receipt) => (
-          <Receipt key={receipt.id} {...receipt} onDelete={onDelete} />
+          <Receipt key={receipt.id} {...receipt} handleDelete={onDelete} />
         ))}
       </ul>
     </>

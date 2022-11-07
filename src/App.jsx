@@ -4,6 +4,7 @@ import ReceiptsList from "./CookbookApp/ReceiptsList";
 import { BrowserRouter, Route } from "react-router-dom";
 import * as receiptsActions from "./CookbookApp/redux/receiptsActions";
 import { sortedReceiptsListSelector } from "./CookbookApp/redux/reciptsSelectors";
+import CreateEditForm from "./CreateEditForm";
 
 class App extends Component {
   conponentDidMount() {
@@ -12,6 +13,9 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
+        <Route>
+          <CreateEditForm />
+        </Route>
         <Route exact path="/">
           <ReceiptsList
             receipts={this.props.receipts}

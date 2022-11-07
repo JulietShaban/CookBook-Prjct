@@ -1,10 +1,10 @@
 import React from "react";
 import RecipeReviewCard from "../RecipeReviewCard";
 
-function Receipt({ id, title, text, image, onChange, onDelete}) {
+function Receipt({ id, title, text, image, onChange, handleDelete}) {
   return (
-    <li id={id} >
-      <RecipeReviewCard image={image} title={title} text={text} onDelete={onDelete} onEdit={onChange}/>
+    <li className="unordered_list_item" id={id} >
+      <RecipeReviewCard image={image} title={title} text={text} handleDelete={handleDelete} onEdit={onChange}/>
     </li>
   );
 }
