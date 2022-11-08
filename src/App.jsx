@@ -9,7 +9,7 @@ import CreateEditForm from "./CreateEditForm";
 class App extends Component {
   componentDidMount() {
     this.props.getReceiptsList();
-    console.log('here')
+   
   }
   render() {
     return (

@@ -15,22 +15,26 @@ export const createReceipt = (receiptData) => {
 };
 
 export const fetchReceiptsList = () => {
-  return fetch(baseUrl)
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-    })
-    .then((receiptsList) =>
-      receiptsList.map(({ _id, ...receipt }) => ({
-        id: _id,
-        ...receipt,
-      }))
-    );
+  return fetch(baseUrl, {mode: 'no-cors'})
+  .then((response) => response.json())
+  .then((data) => { console.log(data) })
+    // .then((res) => {
+    //   if (res.ok) {
+    //     return res.json();
+        
+    //   }
+    // })
+    // .then((receiptsList) =>
+    //   receiptsList.map(({ _id, ...receipt }) => ({
+    //     id: _id,
+    //     ...receipt,
+    //   }))
+    // );
 };
 
 export const updateReceipt = (receiptId, receiptData) => {
   return fetch(`${baseUrl}/${receiptId}`, {
+    mode: 'no-cors',
     method: "PUT",
     headers: {
       "Content-Type": "application/json;utc-",
@@ -45,6 +49,7 @@ export const updateReceipt = (receiptId, receiptData) => {
 
 export const deleteReceipt = (receiptId) => {
   return fetch(`${baseUrl}/${receiptId}`, {
+    mode: 'no-cors',
     method: "DELETE",
   }).then((response) => {
     if (!response.ok) {

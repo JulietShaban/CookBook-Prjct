@@ -20,6 +20,7 @@ const initialState = {
 };
 
 const receiptsReducer = (state = initialState, action) => {
+  
   switch (action.type) {
     case RECEIPTS_LIST_RECIEVED:
       return {

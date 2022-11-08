@@ -5,6 +5,7 @@ export const RECEIPTS_LIST_RECIEVED = "RECEIPTS_LIST_RECIEVED";
 
 export const receiptsListRecieved = (receiptsList) => {
   const action = {
+    
     type: RECEIPTS_LIST_RECIEVED,
     payload: {
       receiptsList,
