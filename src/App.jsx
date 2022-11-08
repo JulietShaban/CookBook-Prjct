@@ -7,8 +7,9 @@ import { sortedReceiptsListSelector } from "./CookbookApp/redux/reciptsSelectors
 import CreateEditForm from "./CreateEditForm";
 
 class App extends Component {
-  conponentDidMount() {
+  componentDidMount() {
     this.props.getReceiptsList();
+    console.log('here')
   }
   render() {
     return (
