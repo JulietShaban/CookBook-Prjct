@@ -13,7 +13,8 @@ import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import EditIcon from '@mui/icons-material/Edit';
+import EditIcon from "@mui/icons-material/Edit";
+import { Link } from "react-router-dom";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -26,7 +27,13 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function RecipeReviewCard({ title, text, image, handleDelete, onEdit }) {
+export default function RecipeReviewCard({
+  title,
+  text,
+  image,
+  handleDelete,
+  onEdit,
+}) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -42,9 +49,11 @@ export default function RecipeReviewCard({ title, text, image, handleDelete, onE
           </Avatar>
         }
         action={
-          <IconButton aria-label="edit">
-            <EditIcon />
-          </IconButton>
+          <Link  to="/create">
+            <IconButton aria-label="edit">
+              <EditIcon />
+            </IconButton>
+          </Link>
         }
         title={title}
       />
