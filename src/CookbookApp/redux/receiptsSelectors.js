@@ -8,3 +8,7 @@ export const sortedReceiptsListSelector = createSelector(
     return receiptsList.slice().sort();
   }
 );
+
+export const receiptSelector = (id) => (state) =>
+  state.receipts.receiptsList.find((receipt) => receipt.id === id)
+  

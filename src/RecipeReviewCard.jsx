@@ -14,7 +14,9 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import EditIcon from "@mui/icons-material/Edit";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
+import { removeRecipe } from "./CookbookApp/redux/receiptsActions";
+import { useDispatch } from "react-redux";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -27,17 +29,17 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function RecipeReviewCard({
-  title,
-  text,
-  image,
-  handleDelete,
-  onEdit,
-}) {
+const RecipeReviewCard = ({ title, text, image, id }) => {
   const [expanded, setExpanded] = React.useState(false);
+
+  const dispatch = useDispatch();
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  const handleDelete = (id) => {
+    dispatch(removeRecipe(id));
   };
 
   return (
@@ -49,7 +51,7 @@ export default function RecipeReviewCard({
           </Avatar>
         }
         action={
-          <Link  to="/create">
+          <Link to={`edit/${id}`}>
             <IconButton aria-label="edit">
               <EditIcon />
             </IconButton>
@@ -58,16 +60,12 @@ export default function RecipeReviewCard({
         title={title}
       />
       <CardMedia component="img" height="194" image={image} alt="Food photo" />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          {text}
-        </Typography>
-      </CardContent>
+
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
-        <IconButton onClick={handleDelete} aria-label="delete">
+        <IconButton onClick={() => handleDelete(id)} aria-label="delete">
           <DeleteIcon />
         </IconButton>
 
@@ -83,12 +81,11 @@ export default function RecipeReviewCard({
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>Recipe:</Typography>
-          <Typography paragraph>{text}</Typography>
-          <Typography paragraph>{text}</Typography>
-          <Typography paragraph>{text} </Typography>
           <Typography>{text} </Typography>
         </CardContent>
       </Collapse>
     </Card>
   );
-}
+};
+
+export default RecipeReviewCard;

@@ -1,46 +1,44 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ReceiptsList from "./CookbookApp/ReceiptsList";
-import { BrowserRouter, Route } from "react-router-dom";
+import { Route, useHistory } from "react-router-dom";
 import * as receiptsActions from "./CookbookApp/redux/receiptsActions";
-import { sortedReceiptsListSelector } from "./CookbookApp/redux/reciptsSelectors";
+import { receiptsListSelector } from "./CookbookApp/redux/receiptsSelectors";
 import CreateEditForm from "./CreateEditForm";
 
-class App extends Component {
-  componentDidMount() {
-    this.props.getReceiptsList();
-   
-  }
-  render() {
-    return (
-      <BrowserRouter>
-        <Route exact path="/create">
-          <CreateEditForm onCreate={this.props.createReceipt} />
-        </Route>
-        
-        <Route exact path="/">
-          <ReceiptsList
-            receipts={this.props.receipts}
-            onChange={this.props.updateReceipt}
-            onDelete={this.props.deleteReceipt}
-          />
-        </Route>
-      </BrowserRouter>
-    );
-  }
-}
+import Button from "@mui/material/Button";
 
-const mapDispatch = {
-  getReceiptsList: receiptsActions.getReceiptsList,
-  updateReceipt: receiptsActions.updateReceipt,
-  deleteReceipt: receiptsActions.deleteReceipt,
-  createReceipt: receiptsActions.createReceipt,
-};
+const App = () => {
+  const dispatch = useDispatch();
+  const receiptsList = useSelector(receiptsListSelector);
+  const history = useHistory();
 
-const mapState = (state) => {
-  return {
-    receipts: sortedReceiptsListSelector(state),
+  const handleRedirect = () => {
+    history.push("/create");
   };
+
+  useEffect(() => {
+    dispatch(receiptsActions.getReceiptsList());
+  }, [dispatch]);
+
+  return (
+    <Route path="/">
+      <h1 className="app-name">Your Receipts</h1>
+      <div className="button_new">
+        <Button onClick={handleRedirect} variant="outlined">
+          New
+        </Button>
+      </div>
+
+      <ReceiptsList receiptsList={receiptsList} />
+      <Route path="/create">
+        <CreateEditForm />
+      </Route>
+      <Route path="/edit/:id">
+        <CreateEditForm />
+      </Route>
+    </Route>
+  );
 };
 
-export default connect(mapState, mapDispatch)(App);
+export default App;

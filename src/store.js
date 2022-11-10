@@ -6,8 +6,6 @@ const appReducer = combineReducers({
   receipts: receiptsReducer,
 });
 
-
-
 const composeEnhancers = window.REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(appReducer, composeEnhancers(applyMiddleware(thunk)));
 

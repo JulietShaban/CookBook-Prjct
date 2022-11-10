@@ -1,4 +1,4 @@
-const baseUrl = "https://mockapi.io/clone/63627aaf37f2167d6f65814d/receipts";
+const baseUrl = "https://63627aaf37f2167d6f65814c.mockapi.io/api/v1/receipts";
 
 export const createReceipt = (receiptData) => {
   return fetch(baseUrl, {
@@ -15,26 +15,15 @@ export const createReceipt = (receiptData) => {
 };
 
 export const fetchReceiptsList = () => {
-  return fetch(baseUrl, {mode: 'no-cors'})
-  .then((response) => response.json())
-  .then((data) => { console.log(data) })
-    // .then((res) => {
-    //   if (res.ok) {
-    //     return res.json();
-        
-    //   }
-    // })
-    // .then((receiptsList) =>
-    //   receiptsList.map(({ _id, ...receipt }) => ({
-    //     id: _id,
-    //     ...receipt,
-    //   }))
-    // );
+  return fetch(baseUrl)
+    .then((response) => response.json())
+    .then((response) => {
+      return response;
+    });
 };
 
 export const updateReceipt = (receiptId, receiptData) => {
   return fetch(`${baseUrl}/${receiptId}`, {
-    mode: 'no-cors',
     method: "PUT",
     headers: {
       "Content-Type": "application/json;utc-",
@@ -49,11 +38,15 @@ export const updateReceipt = (receiptId, receiptData) => {
 
 export const deleteReceipt = (receiptId) => {
   return fetch(`${baseUrl}/${receiptId}`, {
-    mode: 'no-cors',
     method: "DELETE",
-  }).then((response) => {
-    if (!response.ok) {
-      throw new Error("Failed to delete the receipt");
-    }
-  });
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to delete the receipt");
+      }
+      return response.json();
+    })
+    .then((res) => {
+      return res;
+    });
 };

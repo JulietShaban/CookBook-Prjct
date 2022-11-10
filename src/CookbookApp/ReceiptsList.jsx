@@ -1,26 +1,18 @@
 import React from "react";
+import { Grid } from "@mui/material";
 import Receipt from "./Receipt";
-import Button from '@mui/material/Button';
+import { useRouteMatch } from "react-router-dom";
 
-import { Link } from "react-router-dom";
-
-const ReceiptsList = ({ receipts, onDelete }) => {
+const ReceiptsList = ({ receiptsList }) => {
+  
   return (
-    <>
-      <h1 className="app-name">Your Receipts</h1>
-      <div className="button_new">
-      <Link to="/create">
-      <Button  variant="outlined">New</Button>
-      </Link>
-      
-      </div>
-      
-      <ul className="unordered_list">
-        {receipts.map((receipt) => (
-          <Receipt key={receipt.id} {...receipt} handleDelete={onDelete} />
-        ))}
-      </ul>
-    </>
+    <Grid container>
+      {receiptsList.map((receipt) => (
+        <Grid key={receipt.id}  item xs={3}>
+          <Receipt {...receipt} />
+        </Grid>
+      ))}
+    </Grid>
   );
 };
 
