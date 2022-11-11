@@ -62,9 +62,9 @@ const RecipeReviewCard = ({ title, text, image, id }) => {
       <CardMedia component="img" height="194" image={image} alt="Food photo" />
 
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        {/* <IconButton aria-label="add to favorites">
           <FavoriteIcon />
-        </IconButton>
+        </IconButton> */}
         <IconButton onClick={() => handleDelete(id)} aria-label="delete">
           <DeleteIcon />
         </IconButton>
