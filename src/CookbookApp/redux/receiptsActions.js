@@ -1,5 +1,4 @@
 import * as receiptsGateway from "../ReceiptsGateway";
-import { receiptsListSelector } from "./receiptsSelectors";
 export const DELETE_RECEIPT = "DELETE_RECEIPT";
 export const RECEIPTS_LIST_RECIEVED = "RECEIPTS_LIST_RECIEVED";
 export const CREATE_RECEIPT = "CREATE_RECEIPT";
@@ -38,6 +37,7 @@ export const updateReceipt = (receiptId, newReceiptData) => {
 };
 
 const createReceiptAction = (receiptData) => {
+  console.log(receiptData);
   return {
     type: CREATE_RECEIPT,
     payload: { receiptData },
@@ -64,13 +64,8 @@ export const removeRecipe = (receiptId) => {
   return thunkAction;
 };
 
-export const createReceipt = (data) => {
-  console.log(2);
-  const thunkAction = function (dispatch) {
-    receiptsGateway
-      .createReceipt(data)
-      .then(() => dispatch(createReceiptAction(data)));
-  };
-
-  return thunkAction;
+export const createReceipt = (data) => (dispatch) => {
+  receiptsGateway
+    .createReceipt(data)
+    .then((res) => dispatch(createReceiptAction(res)));
 };

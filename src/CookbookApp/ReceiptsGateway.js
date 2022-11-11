@@ -1,4 +1,4 @@
-const baseUrl = "https://63627aaf37f2167d6f65814c.mockapi.io/api/v1/receipts";
+const baseUrl = "https://63627aaf37f2167d6f65814c.mockapi.io/receipts";
 
 export const createReceipt = (receiptData) => {
   console.log(receiptData);
@@ -8,11 +8,14 @@ export const createReceipt = (receiptData) => {
       "Content-Type": "application/json;utc-8",
     },
     body: JSON.stringify(receiptData),
-  }).then((response) => {
-    if (!response.ok) {
-      throw new Error("Failed to create a receipt");
-    }
-  });
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response;
+        // throw new Error("Failed to create a receipt");
+      }
+    })
+    .then((res) => res.json());
 };
 
 export const fetchReceiptsList = () => {

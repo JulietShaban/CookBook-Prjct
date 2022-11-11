@@ -78,7 +78,7 @@ export default function NestedModal() {
         <TextField
           id="standard-basic"
           variant="standard"
-          lablel=""
+          lablel="Title"
           value={title}
           className="input"
           onChange={(event) => setTitle(event.target.value)}
@@ -86,7 +86,7 @@ export default function NestedModal() {
         <TextField
           id="standard-basic"
           value={text}
-          lablel=""
+          lablel="Type your recipe"
           variant="standard"
           className="input_receipt"
           onChange={(event) => setText(event.target.value)}

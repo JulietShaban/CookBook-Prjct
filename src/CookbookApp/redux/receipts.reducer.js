@@ -24,7 +24,7 @@ const receiptsReducer = (state = initialState, action) => {
     case CREATE_RECEIPT: {
       return {
         ...state,
-        receiptsList: state.receiptsList.concat(action.payload.receiptData),
+        receiptsList: [...state.receiptsList, action.payload.receiptData],
       };
     }
 

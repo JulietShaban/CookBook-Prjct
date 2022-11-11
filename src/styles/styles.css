@@ -2,6 +2,8 @@
   text-align: center;
   font-weight: 200;
   font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  color: #1976d2;
 }
 
 .root {
@@ -15,6 +17,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-bottom: 20px;
 }
 
 .add-receipt__form {
@@ -60,7 +63,6 @@
 }
 
 .unordered_list {
-  list-style: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -73,6 +75,7 @@
 
 .unordered_list_item {
   padding: 10px;
+  list-style: none;
 }
 
 .input {

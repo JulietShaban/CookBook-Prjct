@@ -2,6 +2,8 @@
   text-align: center;
   font-weight: 200;
   font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  color: #1976d2;
 }
 .root{
   margin: 20px 10px 20px 10px;
@@ -9,6 +11,7 @@
 .button_new {
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
   }
 
 .add-receipt__form {
@@ -36,13 +39,14 @@
   }
 }
 .unordered_list {
-  list-style: none;
+  
   display: flex;
   justify-content: center;
   margin: auto;
   padding: 0;
   &_item {
     padding: 10px;
+    list-style: none;
   }
 }
 .input {

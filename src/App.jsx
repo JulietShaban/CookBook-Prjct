@@ -23,10 +23,10 @@ const App = () => {
 
   return (
     <Route path="/">
-      <h1 className="app-name">Your Receipts</h1>
+      <h1 className="app-name">Your Recipes</h1>
       <div className="button_new">
         <Button onClick={handleRedirect} variant="outlined">
-          New
+          Add New Recipe
         </Button>
       </div>
 
