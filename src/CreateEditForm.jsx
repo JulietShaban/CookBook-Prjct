@@ -8,6 +8,12 @@ import { useSelector } from "react-redux";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import { TextField } from "@mui/material";
 import { receiptSelector } from "./CookbookApp/redux/receiptsSelectors";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import {
+  updateReceipt,
+  createReceipt,
+} from "./CookbookApp/redux/receiptsActions";
 
 const style = {
   position: "absolute",
@@ -26,13 +32,39 @@ const style = {
 export default function NestedModal() {
   const history = useHistory();
   const { id } = useParams();
-
+  const dispatch = useDispatch();
   const receiptItem = useSelector(receiptSelector(id));
 
- 
+  const [title, setTitle] = useState("");
+  const [text, setText] = useState("");
 
   const handleClose = () => {
     history.push("/");
+  };
+
+  // React.useEffect(() => {
+  //   if (receiptItem) {
+  //     setTitle(receiptItem.title);
+  //     setText(receiptItem.text);
+  //   }
+
+  //   return () => {
+  //     if (receiptItem) {
+  //       setTitle("");
+  //       setText("");
+  //     }
+  //   };
+  // }, [receiptItem]);
+
+  const onSubmit = () => {
+    const data = {
+      title,
+      text,
+    };
+
+    console.log(data);
+
+    id ? dispatch(updateReceipt(id, data)) : dispatch(createReceipt(data));
   };
 
   return (
@@ -45,20 +77,26 @@ export default function NestedModal() {
       <Box sx={{ ...style, width: 400 }}>
         <TextField
           id="standard-basic"
-          label={receiptItem.title}
           variant="standard"
+          lablel=""
+          value={title}
           className="input"
+          onChange={(event) => setTitle(event.target.value)}
         />
         <TextField
           id="standard-basic"
-          label={receiptItem.text}
+          value={text}
+          lablel=""
           variant="standard"
           className="input_receipt"
+          onChange={(event) => setText(event.target.value)}
         />
         <div className="buttons-tab">
           <Link to="/">
             <div className="buttons-tab_btn">
-              <Button variant="outlined">Save</Button>
+              <Button onClick={onSubmit} variant="outlined">
+                Save
+              </Button>
             </div>
           </Link>
           <div className="buttons-tab_btn">

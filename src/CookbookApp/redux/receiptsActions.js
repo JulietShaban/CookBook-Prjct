@@ -24,15 +24,12 @@ export const getReceiptsList = () => {
 };
 
 export const updateReceipt = (receiptId, newReceiptData) => {
-  const thunkAction = function (dispatch, getState) {
-    const state = getState();
-    const receipt = state.receiptsList.find(
-      (receipt) => receipt.id === receiptId
-    );
+  const thunkAction = function (dispatch) {
     const updatedReceipt = {
-      ...receipt,
-      receiptData: newReceiptData,
+      id: receiptId,
+      ...newReceiptData,
     };
+
     receiptsGateway
       .updateReceipt(receiptId, updatedReceipt)
       .then(() => dispatch(editReceiptAction(receiptId, updatedReceipt)));
@@ -67,16 +64,12 @@ export const removeRecipe = (receiptId) => {
   return thunkAction;
 };
 
-export const createReceipt = (title, text, photo) => {
+export const createReceipt = (data) => {
+  console.log(2);
   const thunkAction = function (dispatch) {
-    const receiptData = {
-      title,
-      text,
-      photo,
-    };
     receiptsGateway
-      .createReceipt(receiptData)
-      .then(() => dispatch(createReceiptAction(receiptData)));
+      .createReceipt(data)
+      .then(() => dispatch(createReceiptAction(data)));
   };
 
   return thunkAction;

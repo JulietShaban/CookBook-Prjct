@@ -1,6 +1,7 @@
 const baseUrl = "https://63627aaf37f2167d6f65814c.mockapi.io/api/v1/receipts";
 
 export const createReceipt = (receiptData) => {
+  console.log(receiptData);
   return fetch(baseUrl, {
     method: "POST",
     headers: {
@@ -23,10 +24,11 @@ export const fetchReceiptsList = () => {
 };
 
 export const updateReceipt = (receiptId, receiptData) => {
+  console.log("receiptData");
   return fetch(`${baseUrl}/${receiptId}`, {
     method: "PUT",
     headers: {
-      "Content-Type": "application/json;utc-",
+      "Content-Type": "application/json;utc-8",
     },
     body: JSON.stringify(receiptData),
   }).then((response) => {
