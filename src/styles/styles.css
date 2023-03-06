@@ -7,7 +7,12 @@
 }
 
 .root {
+  height: 100vh;
   margin: 20px 10px 20px 10px;
+}
+
+.divider {
+  display: block;
 }
 
 .button_new {
@@ -18,19 +23,6 @@
       -ms-flex-pack: center;
           justify-content: center;
   margin-bottom: 20px;
-}
-
-.add-receipt__form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 .basic-block {
@@ -62,22 +54,6 @@
   width: 150px;
 }
 
-.unordered_list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin: auto;
-  padding: 0;
-}
-
-.unordered_list_item {
-  padding: 10px;
-  list-style: none;
-}
-
 .input {
   width: 50%;
   margin: 5vw;
@@ -97,5 +73,104 @@
 
 .buttons-tab_btn {
   margin-right: 10px;
+}
+
+.homepage {
+  position: absolute;
+  top: 210px;
+  left: 400px;
+  list-style: none;
+  width: 50vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: auto;
+  padding: 0;
+  z-index: 1;
+}
+
+.homepage_img {
+  display: inline-block;
+  position: relative;
+  left: 20px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  z-index: 0;
+  max-width: 510px;
+  height: 100vh;
+  opacity: 80%;
+}
+
+.homepage__header {
+  font-family: "Mr De Haviland", cursive;
+  font-size: 80px;
+  font-weight: 300;
+  position: absolute;
+  z-index: 2;
+  top: 70px;
+  left: 880px;
+  color: #1976d2;
+}
+
+.homepage_nav {
+  position: relative;
+}
+
+.homepage_nav_sticker {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 250px;
+  height: 120px;
+  border-radius: 5px;
+  position: fixed;
+  top: 50px;
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-left: 130px;
+}
+
+.blog {
+  position: absolute;
+  top: 430px;
+  left: 145px;
+}
+
+.blog__history {
+  font-family: "Mr De Haviland", cursive;
+  font-size: 170px;
+  font-weight: 400;
+  color: white;
+}
+
+.blog__history__image {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 600px;
+  position: absolute;
+  top: -155px;
+  left: 740px;
+}
+
+.blog__history__parag {
+  position: absolute;
+  top: 280px;
+  width: 680px;
 }
 /*# sourceMappingURL=styles.css.map */

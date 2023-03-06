@@ -6,17 +6,18 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
-import Avatar from "@mui/material/Avatar";
+
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
+
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import EditIcon from "@mui/icons-material/Edit";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { removeRecipe } from "./CookbookApp/redux/receiptsActions";
 import { useDispatch } from "react-redux";
+import { ClassNames } from "@emotion/react";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -43,13 +44,8 @@ const RecipeReviewCard = ({ title, text, image, id }) => {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            F
-          </Avatar>
-        }
+    <Card >
+      <CardHeader 
         action={
           <Link to={`edit/${id}`}>
             <IconButton aria-label="edit">
@@ -59,12 +55,14 @@ const RecipeReviewCard = ({ title, text, image, id }) => {
         }
         title={title}
       />
-      <CardMedia component="img" height="194" image={image} alt="Food photo" />
+      <CardMedia component="img" height="170" image={image} alt="Food photo" />
 
       <CardActions disableSpacing>
-        {/* <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton> */}
+        {
+          <IconButton aria-label="add to favorites">
+            <FavoriteIcon />
+          </IconButton>
+        }
         <IconButton onClick={() => handleDelete(id)} aria-label="delete">
           <DeleteIcon />
         </IconButton>
@@ -80,8 +78,8 @@ const RecipeReviewCard = ({ title, text, image, id }) => {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Recipe:</Typography>
-          <Typography>{text} </Typography>
+          <Typography paragraph>Ingredients:</Typography>
+          <Typography>{text}</Typography>
         </CardContent>
       </Collapse>
     </Card>

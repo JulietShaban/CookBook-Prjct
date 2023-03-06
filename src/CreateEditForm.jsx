@@ -42,28 +42,21 @@ export default function NestedModal() {
     history.push("/");
   };
 
-  // React.useEffect(() => {
-  //   if (receiptItem) {
-  //     setTitle(receiptItem.title);
-  //     setText(receiptItem.text);
-  //   }
-
-  //   return () => {
-  //     if (receiptItem) {
-  //       setTitle("");
-  //       setText("");
-  //     }
-  //   };
-  // }, [receiptItem]);
+  React.useEffect(() => {
+    if (receiptItem) {
+      setTitle(receiptItem.title);
+      setText(receiptItem.text);
+    } else {
+      setTitle("Recipe name");
+      setText("Ingredients");
+    }
+  }, [receiptItem]);
 
   const onSubmit = () => {
     const data = {
       title,
       text,
     };
-
-    console.log(data);
-
     id ? dispatch(updateReceipt(id, data)) : dispatch(createReceipt(data));
   };
 
@@ -82,14 +75,16 @@ export default function NestedModal() {
           value={title}
           className="input"
           onChange={(event) => setTitle(event.target.value)}
+          onClick={() => setTitle('') }
         />
         <TextField
           id="standard-basic"
           value={text}
-          lablel="Type your recipe"
+          lablel="Ingredients"
           variant="standard"
           className="input_receipt"
           onChange={(event) => setText(event.target.value)}
+          onClick={() => setText('') }
         />
         <div className="buttons-tab">
           <Link to="/">
