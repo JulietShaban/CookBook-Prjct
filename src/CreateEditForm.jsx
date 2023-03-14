@@ -7,13 +7,14 @@ import IconButton from "@mui/material/IconButton";
 import { useSelector } from "react-redux";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import { TextField } from "@mui/material";
-import { receiptSelector } from "./CookbookApp/redux/receiptsSelectors";
+
+import { recipeSelector } from "./CookbookApp/redux/recipesSelectors";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import {
-  updateReceipt,
-  createReceipt,
-} from "./CookbookApp/redux/receiptsActions";
+  updateRecipe,
+  createRecipe,
+} from "./CookbookApp/redux/recipesActions";
 
 const style = {
   position: "absolute",
@@ -33,7 +34,7 @@ export default function NestedModal() {
   const history = useHistory();
   const { id } = useParams();
   const dispatch = useDispatch();
-  const receiptItem = useSelector(receiptSelector(id));
+  const recipeItem = useSelector(recipeSelector(id));
 
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
@@ -43,21 +44,21 @@ export default function NestedModal() {
   };
 
   React.useEffect(() => {
-    if (receiptItem) {
-      setTitle(receiptItem.title);
-      setText(receiptItem.text);
+    if (recipeItem) {
+      setTitle(recipeItem.title);
+      setText(recipeItem.text);
     } else {
       setTitle("Recipe name");
       setText("Ingredients");
     }
-  }, [receiptItem]);
+  }, [recipeItem]);
 
   const onSubmit = () => {
     const data = {
       title,
       text,
     };
-    id ? dispatch(updateReceipt(id, data)) : dispatch(createReceipt(data));
+    id ? dispatch(updateRecipe(id, data)) : dispatch(createRecipe(data));
   };
 
   return (

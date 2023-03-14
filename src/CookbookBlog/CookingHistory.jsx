@@ -3,25 +3,28 @@ import React from "react";
 const CookingHistory = () => {
   return (
     <div className="blog">
-      <h1 className="blog__history">History</h1>
-      <p className="blog__history__parag">
-        Phylogenetic analysis suggests that early hominids may have adopted
-        cooking 1.8 million to 2.3 million years ago. Re-analysis of burnt bone
-        fragments and plant ashes from the Wonderwerk Cave in South Africa has
-        provided evidence supporting control of fire by early humans by 1
-        million years ago. In his seminal work Catching Fire: How Cooking Made
-        Us Human, Richard Wrangham suggested that evolution of bipedalism and a
-        large cranial capacity meant that early Homo erectus regularly cooked
-        food. However, unequivocal evidence in the archaeological record for the
-        controlled use of fire begins at 400,000 BCE, long after Homo erectus.
-        Archaeological evidence from 300,000 years ago, in the form of ancient
-        hearths, earth ovens, burnt animal bones, and flint, are found across
-        Europe and the Middle East. The oldest likely evidence (via heated fish
-        teeth from a deep cave) of controlled use of fire to cook food by
-        archaic humans was dated to ~780,000 years ago. Anthropologists think
-        that widespread cooking fires began about 250,000 years ago when hearths
-        first appeared.
-      </p>
+      <div className="blog__history">
+        <h1 className="blog__history__header">Topic of the day</h1>
+        <img className="blog__history__teller" src="https://kbzahntechnik.de/wp-content/uploads/2017/06/Fotolia_118630837_XL-1170x780.jpg" alt="portrait"/>
+        <h3 className="blog__history__teller__name">Karen Shmidt</h3>
+        <h2 className="blog__history__subheader">What is a food blog?</h2>
+        <p className="blog__history__parag">
+          Actually, it depends. But essentially a food blog is one where
+          bloggers bring together food, blogs about and photography featuring
+          food under the wider umbrella of food journalism. If a foodie is
+          someone who loves learning about, tasting and sharing food - so a food
+          blog takes this love one step further and puts it into print to be
+          shared. A food blog might share the history and culture of dishes from
+          around the world, including recipes and the best places to try them.
+          It might use different types of media - articles, photos and video -
+          to capture the writer's favourite foods and recipes. A food blog might
+          be dedicated to the food of a specific region or culture, or a certain
+          diet - veganism, being one example. From the Mom who documents her
+          kids favorite recipes, to the semi-pro chef sharing their tricks of
+          the trade - a food blog aims to bring people together in the name of
+          good food.
+        </p>
+      </div>
       <img
         alt="plate"
         src="https://i.pinimg.com/736x/af/93/3e/af933e60b17982f1077dbcffc9cf6e9b.jpg"

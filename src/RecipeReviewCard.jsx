@@ -15,9 +15,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import EditIcon from "@mui/icons-material/Edit";
 import { Link } from "react-router-dom";
-import { removeRecipe } from "./CookbookApp/redux/receiptsActions";
+import { removeRecipe } from "./CookbookApp/redux/recipesActions";
 import { useDispatch } from "react-redux";
-import { ClassNames } from "@emotion/react";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -30,7 +29,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-const RecipeReviewCard = ({ title, text, image, id }) => {
+const RecipeReviewCard = ({ title, text, image, id, favoriteRecipe }) => {
   const [expanded, setExpanded] = React.useState(false);
 
   const dispatch = useDispatch();
@@ -42,10 +41,11 @@ const RecipeReviewCard = ({ title, text, image, id }) => {
   const handleDelete = (id) => {
     dispatch(removeRecipe(id));
   };
+ 
 
   return (
-    <Card >
-      <CardHeader 
+    <Card>
+      <CardHeader
         action={
           <Link to={`edit/${id}`}>
             <IconButton aria-label="edit">
@@ -59,7 +59,7 @@ const RecipeReviewCard = ({ title, text, image, id }) => {
 
       <CardActions disableSpacing>
         {
-          <IconButton aria-label="add to favorites">
+          <IconButton aria-label="add to favorites" onClick={console.log("hi")}>
             <FavoriteIcon />
           </IconButton>
         }

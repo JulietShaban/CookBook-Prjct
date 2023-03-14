@@ -1,6 +1,6 @@
 const baseUrl = "https://63627aaf37f2167d6f65814c.mockapi.io/receipts";
 
-export const createReceipt = (data) => {
+export const createRecipe = (data) => {
   return fetch(baseUrl, {
     method: "POST",
     headers: {
@@ -16,7 +16,7 @@ export const createReceipt = (data) => {
     .then((res) => res.json());
 };
 
-export const fetchReceiptsList = () => {
+export const fetchRecipesList = () => {
   return fetch(baseUrl)
     .then((response) => response.json())
     .then((response) => {
@@ -24,28 +24,28 @@ export const fetchReceiptsList = () => {
     });
 };
 
-export const updateReceipt = (receiptId, receiptData) => {
+export const updateRecipe = (recipeId, recipeData) => {
   
-  return fetch(`${baseUrl}/${receiptId}`, {
+  return fetch(`${baseUrl}/${recipeId}`, {
     method: "PUT",
     headers: {
       "Content-type": "application/json;utc-8",
     },
-    body: JSON.stringify(receiptData),
+    body: JSON.stringify(recipeData),
   }).then((response) => {
     if (!response.ok) {
-      throw new Error("Failed to update the receipt");
+      throw new Error("Failed to update the rec");
     }
   });
 };
 
-export const deleteReceipt = (receiptId) => {
-  return fetch(`${baseUrl}/${receiptId}`, {
+export const deleteRecipe = (recipeId) => {
+  return fetch(`${baseUrl}/${recipeId}`, {
     method: "DELETE",
   })
     .then((response) => {
       if (!response.ok) {
-        throw new Error("Failed to delete the receipt");
+        throw new Error("Failed to delete the recipe");
       }
       return response.json();
     })

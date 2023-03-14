@@ -1,10 +1,3 @@
-.app-name {
-  text-align: center;
-  font-weight: 200;
-  font-family: Arial, Helvetica, sans-serif;
-  text-transform: uppercase;
-  color: #1976d2;
-}
 .root {
   height: 100vh;
   margin: 20px 10px 20px 10px;
@@ -12,10 +5,11 @@
 .divider {
   display: block;
 }
-.button_new {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
+.card {
+  &__item {
+    width: 350px;
+    margin-right: 0px;
+  }
 }
 
 .basic-block {
@@ -54,78 +48,152 @@
     margin-right: 10px;
   }
 }
+
+// --homepage--
+
 .homepage {
-  position: absolute;
-  top: 210px;
-  left: 400px;
   list-style: none;
-  width: 50vw;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: auto;
   padding: 0;
-  z-index: 1;
 
+  &__slider {
+    margin: 0px 10px 0px 140px;
+  }
   &_img {
-    display: inline-block;
-    position: relative;
-    left: 20px;
-    object-fit: contain;
-    z-index: 0;
-    max-width: 510px;
-    height: 100vh;
-    opacity: 80%;
-  }
-  &__header {
-    font-family: "Mr De Haviland", cursive;
-    font-size: 80px;
-    font-weight: 300;
     position: absolute;
-    z-index: 2;
-    top: 70px;
-    left: 880px;
-    color: #1976d2;
+    left: -150px;
+    top: -80px;
+    max-width: 400px;
+    z-index: 0;
+    opacity: 95%;
+    animation: 30s linear 0s infinite alternate rolling;
   }
-  &_nav {
-    position: relative;
-    &_sticker {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      width: 250px;
-      height: 120px;
-      border-radius: 5px;
+  &__list-name {
+    font-family: "Mr De Haviland", cursive;
+    font-size: 70px;
+    font-weight: 400;
+    color: rgba(197, 193, 193, 0.9);
+  }
+
+  // -----Navigation sticker ----
+
+  &_nav_sticker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1400px;
+    height: 80px;
+    border-radius: 5px;
+    border: 1px solid c;
+    position: fixed;
+    top: 60px;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-left: 195px;
+    &_header {
+     
+      margin-top: 75px;
+      margin-left: 240px;
+      font-family: "Mr De Haviland", cursive;
+      font-weight: 400;
+      font-size: 140px;
+      color: rgba(121, 162, 233, 0.7);
+      text-shadow: 15px 13px 8px rgba(8, 8, 8, 0.1);
+    }
+    &_button {
       position: fixed;
-      top: 50px;
-      z-index: 2;
-      background-color: rgba(255, 255, 255, 0.5);
-      margin-left: 130px;
+      left: 200px;
+    }
+    &_login {
+      position: fixed;
+      top: 80px;
+      left: 1330px;
+      width: 100px;
+      height: 100px;
+    }
+    &_favorites {
+      position: fixed;
+      top: 80px;
+      left: 1400px;
+      width: 100px;
+      height: 100px;
     }
   }
 }
 
+@keyframes rolling {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360 * 5deg);
+  }
+}
+
+// --blog--
+
 .blog {
-  position: absolute;
-  top: 430px;
-  left: 145px;
+  margin: 30px 0px 0px 10px;
+  display: flex;
   &__history {
-    font-family: "Mr De Haviland", cursive;
-    font-size: 170px;
-    font-weight: 400;
-    color: white;
+    display: flex;
+    position: relative;
+    top: 250px;
+    left: 250px;
+    border: 1px solid rgba(85, 136, 223, 0.7);
+    border-radius: 20px;
+
+    height: 350px;
+    width: 900px;
+    -webkit-box-shadow: 10px 9px 15px -5px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 10px 9px 15px -5px rgba(0, 0, 0, 0.25);
+    box-shadow: 10px 9px 15px -5px rgba(0, 0, 0, 0.25);
+
+    &__header {
+      position: absolute;
+
+      bottom: 30px;
+      font-family: "Mr De Haviland", cursive;
+      font-size: 240px;
+      font-weight: 400;
+      color: rgba(197, 193, 193, 0.7);
+    }
+    &__subheader {
+      position: absolute;
+      top: 50px;
+      left: 10px;
+      font-size: 40px;
+      color: rgb(0, 0, 0);
+      right: 20px;
+    }
+    &__teller {
+      position: absolute;
+      bottom: 60px;
+      right: 50px;
+      border-radius: 50%;
+      border: 1px solid black;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      &__name {
+        position: absolute;
+        bottom: 210px;
+        right: 45px;
+        font-size: 25px;
+        color: white;
+      }
+    }
     &__image {
       object-fit: cover;
-      width: 600px;
-      position: absolute;
-      top: -155px;
-      left: 740px;
+      max-width: 600px;
     }
     &__parag {
       position: absolute;
-      top: 280px;
-      width: 680px;
+      width: 600px;
+      margin: 140px 10px 0px 30px;
     }
   }
 }
