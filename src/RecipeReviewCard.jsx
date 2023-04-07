@@ -1,87 +1,72 @@
 import * as React from "react";
+
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import Collapse from "@mui/material/Collapse";
 
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import DeleteIcon from "@mui/icons-material/Delete";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
 import EditIcon from "@mui/icons-material/Edit";
+
 import { Link } from "react-router-dom";
-import { removeRecipe } from "./CookbookApp/redux/recipesActions";
+import { removeRecipe } from "./CookbookApp/redux/recipesThunks";
 import { useDispatch } from "react-redux";
 
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-  marginLeft: "auto",
-  transition: theme.transitions.create("transform", {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
-
 const RecipeReviewCard = ({ title, text, image, id, favoriteRecipe }) => {
-  const [expanded, setExpanded] = React.useState(false);
-
   const dispatch = useDispatch();
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
 
   const handleDelete = (id) => {
     dispatch(removeRecipe(id));
   };
- 
 
   return (
-    <Card>
+    <Card width="400">
       <CardHeader
         action={
-          <Link to={`edit/${id}`}>
-            <IconButton aria-label="edit">
-              <EditIcon />
+          <>
+            <Link to={`edit/${id}`}>
+              <IconButton color="primary" aria-label="edit">
+                <EditIcon />
+              </IconButton>
+            </Link>
+            <IconButton
+              color="primary"
+              onClick={() => handleDelete(id)}
+              aria-label="delete"
+            >
+              <DeleteIcon />
             </IconButton>
-          </Link>
+            {
+              <IconButton
+                color="primary"
+                aria-label="add to favorites"
+                onClick={console.log("hi")}
+              >
+                <FavoriteIcon />
+              </IconButton>
+            }
+          </>
         }
         title={title}
       />
-      <CardMedia component="img" height="170" image={image} alt="Food photo" />
 
-      <CardActions disableSpacing>
-        {
-          <IconButton aria-label="add to favorites" onClick={console.log("hi")}>
-            <FavoriteIcon />
-          </IconButton>
+      <CardMedia
+        component="img"
+        height="175"
+        image={
+          "https://i.pinimg.com/originals/16/7d/ff/167dffbf18e153bc91706afac16ffc4f.jpg"
         }
-        <IconButton onClick={() => handleDelete(id)} aria-label="delete">
-          <DeleteIcon />
-        </IconButton>
+        alt="Food photo"
+      />
 
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Ingredients:</Typography>
-          <Typography>{text}</Typography>
-        </CardContent>
-      </Collapse>
+      <Typography color="primary" font="Arial">
+        {text}
+      </Typography>
     </Card>
   );
 };

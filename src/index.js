@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import "react-multi-carousel/lib/styles.css";
 
 import store from "./store";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(

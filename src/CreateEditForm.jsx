@@ -11,10 +11,7 @@ import { TextField } from "@mui/material";
 import { recipeSelector } from "./CookbookApp/redux/recipesSelectors";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import {
-  updateRecipe,
-  createRecipe,
-} from "./CookbookApp/redux/recipesActions";
+import { updateRecipe, createRecipe } from "./CookbookApp/redux/recipesThunks";
 
 const style = {
   position: "absolute",

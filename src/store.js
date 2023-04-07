@@ -1,16 +1,9 @@
-import { createStore, applyMiddleware, combineReducers } from "redux";
-import thunk from "redux-thunk";
+import { configureStore } from "@reduxjs/toolkit";
 
-import recipesReducer from "./CookbookApp/redux/recipesReducer";
-import { composeWithDevTools } from "redux-devtools-extension";
+import recipesReducer from "./CookbookApp/redux/recipesSlice";
 
-const appReducer = combineReducers({
-  recipes: recipesReducer,
+export default configureStore({
+  reducer: {
+    recipes: recipesReducer,
+  },
 });
-
-const store = createStore(
-  appReducer,
-  composeWithDevTools(applyMiddleware(thunk))
-);
-
-export default store;
